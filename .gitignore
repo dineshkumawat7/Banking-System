@@ -1,0 +1,76 @@
+# ========================
+# Java / Maven / Spring Boot
+# ========================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven build files
+dependency-reduced-pom.xml
+release.properties
+
+# ========================
+# IDEs
+# ========================
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.target/
+
+# VS Code
+.vscode/
+
+# ========================
+# OS generated files
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# Logs and runtime files
+# ========================
+*.log
+logs/
+spring.log
+
+# ========================
+# Env & sensitive
+# ========================
+.env
+.env.*
+application-*.yml
+application-*.properties
+
+# ========================
+# Test Reports & Coverage
+# ========================
+/test-output/
+/coverage/
+/jacoco.exec
+
+# ========================
+# Docker
+# ========================
+docker-compose.override.yml
+*.env
+
+# ========================
+# Misc
+# ========================
+node_modules/
+dist/
+build/
+.cache/
