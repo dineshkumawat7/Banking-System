@@ -9,6 +9,7 @@
     </parent>
     <groupId>com.bank.common.lib</groupId>
     <artifactId>common-lib</artifactId>
+    <version>1.0.0</version>
     <name>common-lib</name>
     <description>Shared DTOs and utilities</description>
     <dependencies>
