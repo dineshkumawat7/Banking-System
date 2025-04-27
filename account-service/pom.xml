@@ -7,13 +7,18 @@
         <artifactId>banking-system</artifactId>
         <version>1.0.0</version>
     </parent>
+  
     <groupId>com.bank.account-service</groupId>
     <artifactId>account-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>account-service</name>
     <description>Manages accounts</description>
+
     <dependencies>
         <!-- Only add service-specific dependencies if needed -->
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
 </project>

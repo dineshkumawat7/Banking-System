@@ -14,6 +14,13 @@
     <description>Spring Cloud Gateway</description>
     <dependencies>
         <!-- Only add service-specific dependencies if needed -->
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -9,10 +9,14 @@
     </parent>
     <groupId>com.bank.common.lib</groupId>
     <artifactId>common-lib</artifactId>
+    <version>1.0.0</version>
     <name>common-lib</name>
     <description>Shared DTOs and utilities</description>
     <dependencies>
         <!-- Only add service-specific dependencies if needed -->
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
 </project>
