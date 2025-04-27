@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/api/v1/bank/user")
+@RequestMapping("/api/v1/bank/users")
 @Validated
 public class UserController {
 
@@ -49,7 +49,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Users fetched successfully"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @GetMapping(value = "/get", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CommonResponse<Page<User>>> getUsers(@RequestParam(value = "pageNumber", required = false, defaultValue = "0") int pageNumber,
                                                                @RequestParam(value = "pageSize", required = false, defaultValue = "20") int pageSize) {
         Page<User> users = userService.getUsers(pageNumber, pageSize);
@@ -62,7 +62,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "User not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @GetMapping(value = "/get/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CommonResponse<User>> getUserByUserId(@PathVariable("userId") String userId) {
         User user = userService.getUserById(userId);
         return getSpecificResponse("User fetched successfully.", Constants.OK_STATUS_CODE, user);
@@ -87,7 +87,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "User not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @DeleteMapping(value = "/delete", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser(@RequestParam(value = "userId", required = true) String userId) {
         userService.deleteUser(userId);
         return getSpecificResponse("User deleted successfully", Constants.OK_STATUS_CODE, "NA");

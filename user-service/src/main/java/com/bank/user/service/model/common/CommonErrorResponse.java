@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ErrorResponse {
+public class CommonErrorResponse {
     private String timestamp;
     private String status;
     private String errorCode;

@@ -13,6 +13,21 @@ public class MetadataExtractor {
         String correlationId = request.getHeader("X-Correlation-Id");
         String authenticatedUserId = "anonymous";
         String sourceIp = request.getHeader("X-Forwarded-For");
+        if (sourceIp == null || sourceIp.isEmpty() || "unknown".equalsIgnoreCase(sourceIp)) {
+            sourceIp = request.getHeader("Proxy-Client-IP");
+        }
+        if (sourceIp == null || sourceIp.isEmpty() || "unknown".equalsIgnoreCase(sourceIp)) {
+            sourceIp = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (sourceIp == null || sourceIp.isEmpty() || "unknown".equalsIgnoreCase(sourceIp)) {
+            sourceIp = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (sourceIp == null || sourceIp.isEmpty() || "unknown".equalsIgnoreCase(sourceIp)) {
+            sourceIp = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+        if (sourceIp == null || sourceIp.isEmpty() || "unknown".equalsIgnoreCase(sourceIp)) {
+            sourceIp = request.getRemoteAddr(); // fallback
+        }
 
         Metadata metadata = Metadata.builder()
                 .requestId(requestId != null ? requestId : UUID.randomUUID().toString())

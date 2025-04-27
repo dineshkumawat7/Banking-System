@@ -41,12 +41,6 @@
     <dependencies>
         <!-- Common dependencies available to all modules -->
 
-        <!-- Spring Boot Web Starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <!-- DevTools (for hot reload in local) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
