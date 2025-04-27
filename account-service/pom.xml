@@ -7,11 +7,13 @@
         <artifactId>banking-system</artifactId>
         <version>1.0.0</version>
     </parent>
-    <groupId>com.bank.account.service</groupId>
+  
+    <groupId>com.bank.account-service</groupId>
     <artifactId>account-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>account-service</name>
-    <description>Handles user bank account</description>
+    <description>Manages accounts</description>
+
     <dependencies>
         <!-- Only add service-specific dependencies if needed -->
         <dependency>
