@@ -1,4 +1,4 @@
-package com.bank.user.service.utils;
+package com.bank.common.lib.utils;
 
 public class Constants {
     public static final String SUCCESS_TAG = "Success";

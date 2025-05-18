@@ -1,6 +1,7 @@
-package com.bank.user.service.model.common;
+package com.bank.common.lib.model.response;
 
 import lombok.*;
+import com.bank.common.lib.model.Metadata;
 
 @Getter
 @Setter

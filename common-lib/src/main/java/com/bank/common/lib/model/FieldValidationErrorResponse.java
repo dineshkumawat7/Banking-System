@@ -1,4 +1,4 @@
-package com.bank.user.service.model.common;
+package com.bank.common.lib.model;
 
 import lombok.*;
 

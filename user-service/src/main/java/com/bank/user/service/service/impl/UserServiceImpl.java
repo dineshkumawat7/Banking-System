@@ -1,5 +1,6 @@
 package com.bank.user.service.service.impl;
 
+import com.bank.common.lib.utils.Constants;
 import com.bank.user.service.config.EnvironmentParamConfig;
 import com.bank.user.service.entity.User;
 import com.bank.user.service.exception.UserServiceException;
@@ -7,7 +8,6 @@ import com.bank.user.service.model.UpdateUserRequest;
 import com.bank.user.service.model.UserRegistrationRequest;
 import com.bank.user.service.repository.UserRepo;
 import com.bank.user.service.service.UserService;
-import com.bank.user.service.utils.Constants;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

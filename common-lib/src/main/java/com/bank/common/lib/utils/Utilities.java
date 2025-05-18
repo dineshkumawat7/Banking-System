@@ -1,6 +1,5 @@
-package com.bank.user.service.utils;
+package com.bank.common.lib.utils;
 
-import com.bank.user.service.exception.UserServiceException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -53,9 +52,9 @@ public class Utilities {
      *
      * @param object - Object of a class
      * @return String - JSON string
-     * @throws UserServiceException - if exception occurred
+     * @throws if exception occurred
      */
-    public static String objectToJsonString(Object object) throws UserServiceException {
+    public static String objectToJsonString(Object object) throws Exception {
         String jsonString = null;
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -63,7 +62,7 @@ public class Utilities {
             objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
             jsonString = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            throw new UserServiceException(Constants.INTERNAL_SERVER_ERROR_STATUS_CODE, e.getMessage());
+            throw new Exception(e.getMessage());
         }
         return jsonString;
     }

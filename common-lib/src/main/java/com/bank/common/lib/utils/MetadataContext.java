@@ -1,6 +1,6 @@
-package com.bank.user.service.utils;
+package com.bank.common.lib.utils;
 
-import com.bank.user.service.model.common.Metadata;
+import com.bank.common.lib.model.Metadata;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

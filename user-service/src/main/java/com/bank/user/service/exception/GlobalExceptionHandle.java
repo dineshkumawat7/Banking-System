@@ -1,10 +1,10 @@
 package com.bank.user.service.exception;
 
-import com.bank.user.service.model.common.CommonErrorResponse;
-import com.bank.user.service.model.common.FieldErrorDetail;
-import com.bank.user.service.model.common.FieldValidationErrorResponse;
-import com.bank.user.service.utils.Constants;
-import com.bank.user.service.utils.MetadataContext;
+import com.bank.common.lib.model.FieldErrorDetail;
+import com.bank.common.lib.model.FieldValidationErrorResponse;
+import com.bank.common.lib.model.response.CommonErrorResponse;
+import com.bank.common.lib.utils.Constants;
+import com.bank.common.lib.utils.MetadataContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

@@ -1,12 +1,12 @@
-package com.bank.user.service.utils;
+package com.bank.common.lib.utils;
 
-import com.bank.user.service.config.EnvironmentParamConfig;
-import com.bank.user.service.model.common.Metadata;
+import com.bank.common.lib.config.CommonEnvironmentParamConfig;
+import com.bank.common.lib.model.Metadata;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.UUID;
 
-public class MetadataExtractor {
+public class RequestMetadataBuilder {
 
     public static Metadata extract(HttpServletRequest request) {
         String requestId = request.getHeader("X-Request-Id");
@@ -30,12 +30,12 @@ public class MetadataExtractor {
         }
 
         Metadata metadata = Metadata.builder()
-                .requestId(requestId != null ? requestId : UUID.randomUUID().toString())
+                .requestId(requestId != null ? requestId : RequestIdGenerator.generate())
                 .correlationId(correlationId != null ? correlationId : UUID.randomUUID().toString())
                 .authenticatedUserId(authenticatedUserId)
                 .sourceIp(sourceIp != null ? sourceIp : request.getRemoteAddr())
-                .environment(EnvironmentParamConfig.ENVIRONMENT)
-                .serviceName(EnvironmentParamConfig.SERVICE_NAME)
+                .environment(CommonEnvironmentParamConfig.ENVIRONMENT)
+                .serviceName(CommonEnvironmentParamConfig.SERVICE_NAME)
                 .build();
         return metadata;
     }

@@ -1,13 +1,13 @@
 package com.bank.user.service.controller;
 
+import com.bank.common.lib.model.response.CommonSuccessResponse;
+import com.bank.common.lib.utils.Constants;
+import com.bank.common.lib.utils.MetadataContext;
 import com.bank.user.service.entity.User;
 import com.bank.user.service.exception.UserServiceException;
 import com.bank.user.service.model.UpdateUserRequest;
 import com.bank.user.service.model.UserRegistrationRequest;
-import com.bank.user.service.model.common.CommonResponse;
 import com.bank.user.service.service.UserService;
-import com.bank.user.service.utils.Constants;
-import com.bank.user.service.utils.MetadataContext;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -39,7 +39,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CommonResponse<User>> createNewUser(@Valid @RequestBody UserRegistrationRequest userRegistrationRequest) {
+    public ResponseEntity<CommonSuccessResponse<User>> createNewUser(@Valid @RequestBody UserRegistrationRequest userRegistrationRequest) {
         User createdUser = userService.createOrUpdateUser(userRegistrationRequest);
         return getSpecificResponse("New user created successfully.", Constants.CREATED_STATUS_CODE, createdUser);
     }
@@ -50,7 +50,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CommonResponse<Page<User>>> getUsers(@RequestParam(value = "pageNumber", required = false, defaultValue = "0") int pageNumber,
+    public ResponseEntity<CommonSuccessResponse<Page<User>>> getUsers(@RequestParam(value = "pageNumber", required = false, defaultValue = "0") int pageNumber,
                                                                @RequestParam(value = "pageSize", required = false, defaultValue = "20") int pageSize) {
         Page<User> users = userService.getUsers(pageNumber, pageSize);
         return getSpecificResponse("Users fetched successfully.", Constants.OK_STATUS_CODE, users);
@@ -63,7 +63,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping(value = "/get/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CommonResponse<User>> getUserByUserId(@PathVariable("userId") String userId) {
+    public ResponseEntity<CommonSuccessResponse<User>> getUserByUserId(@PathVariable("userId") String userId) {
         User user = userService.getUserById(userId);
         return getSpecificResponse("User fetched successfully.", Constants.OK_STATUS_CODE, user);
     }
@@ -76,7 +76,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CommonResponse<User>> updateUser(@Valid @RequestBody UpdateUserRequest updateUserRequest) {
+    public ResponseEntity<CommonSuccessResponse<User>> updateUser(@Valid @RequestBody UpdateUserRequest updateUserRequest) {
         User updatedUser = userService.createOrUpdateUser(updateUserRequest);
         return getSpecificResponse("User updated successfully.", Constants.OK_STATUS_CODE, updatedUser);
     }
@@ -107,9 +107,9 @@ public class UserController {
         }
     }
 
-    private <T> ResponseEntity<CommonResponse<T>> getSpecificResponse(String msg, String statusCode, T payload) {
+    private <T> ResponseEntity<CommonSuccessResponse<T>> getSpecificResponse(String msg, String statusCode, T payload) {
         try {
-            CommonResponse<T> response = CommonResponse.<T>builder()
+            CommonSuccessResponse<T> response = CommonSuccessResponse.<T>builder()
                     .timestamp(String.valueOf(LocalDateTime.now()))
                     .status(Constants.SUCCESS_TAG)
                     .statusCode(statusCode)

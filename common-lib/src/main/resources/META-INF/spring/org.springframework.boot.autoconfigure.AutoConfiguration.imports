@@ -1,0 +1,2 @@
+com.bank.common.lib.config.CommonLibAutoConfiguration
+com.bank.common.lib.config.CommonEnvironmentParamConfig

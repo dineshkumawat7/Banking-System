@@ -1,10 +1,9 @@
-package com.bank.user.service.filter;
+package com.bank.common.lib.filter;
 
-import com.bank.user.service.exception.UserServiceException;
-import com.bank.user.service.model.common.Metadata;
-import com.bank.user.service.utils.Constants;
-import com.bank.user.service.utils.MetadataContext;
-import com.bank.user.service.utils.MetadataExtractor;
+import com.bank.common.lib.exception.CommonCustomException;
+import com.bank.common.lib.utils.Constants;
+import com.bank.common.lib.utils.MetadataContext;
+import com.bank.common.lib.utils.RequestMetadataBuilder;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,11 +19,11 @@ public class MetadataFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Store in ThreadLocal or context for access in controllers/services
-        MetadataContext.setMetadata(MetadataExtractor.extract(request));
+        MetadataContext.setMetadata(RequestMetadataBuilder.extract(request));
         try {
             filterChain.doFilter(request, response);
         } catch (Exception e) {
-            throw new UserServiceException(Constants.INTERNAL_SERVER_ERROR_STATUS_CODE, e.getMessage());
+            throw new CommonCustomException(Constants.INTERNAL_SERVER_ERROR_STATUS_CODE, e.getMessage());
         } finally {
             MetadataContext.clearMetadata();
         }
